@@ -1,5 +1,6 @@
 package com.example.myapplicationb
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -15,6 +16,9 @@ class MainActivity : AppCompatActivity() {
 
         // Устанавливаем слушатель нажатий
         registerButton.setOnClickListener {
+            val intentToAnotherScreen = Intent(this, RegistrationActivity::class.java)
+            startActivity(intentToAnotherScreen)
+
             Toast.makeText(this@MainActivity, "You clicked me.", Toast.LENGTH_SHORT).show()
         }
     }
