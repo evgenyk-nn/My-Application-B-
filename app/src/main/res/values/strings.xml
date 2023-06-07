@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BookWorm</string>
+    <string name="button_register_title">Register</string>
+    <string name="open_drawer" />
+
+
+</resources>
