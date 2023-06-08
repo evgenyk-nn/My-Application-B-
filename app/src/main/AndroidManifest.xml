@@ -18,6 +18,9 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".activity_login"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -30,4 +33,5 @@
             android:name=".RegistrationActivity"
             android:exported="false" />
     </application>
+
 </manifest>

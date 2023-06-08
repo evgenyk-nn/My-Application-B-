@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +22,29 @@ class MainActivity : AppCompatActivity() {
 
             Toast.makeText(this@MainActivity, "You clicked me.", Toast.LENGTH_SHORT).show()
         }
+
+        // Получаем ссылку на текстовое поле
+        val registerTextView = findViewById<TextView>(R.id.login_activity_text)
+
+        // Устанавливаем слушатель нажатий
+        registerTextView.setOnClickListener {
+            val intentToAnotherScreen = Intent(this, LoginActivity::class.java)
+            startActivity(intentToAnotherScreen)
+
+            Toast.makeText(this@MainActivity, "You clicked me.", Toast.LENGTH_SHORT).show()
+        }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
 
