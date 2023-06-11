@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="login_activity_button" type="id" />
+    <item name="login_activity_text" type="id" />
+    <item name="bookworm_logo" type="id" />
+    <item name="login_activity_email_input" type="id" />
+    <item name="login_activity_password_input" type="id" />
+</resources>
