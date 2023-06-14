@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
@@ -25,10 +23,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference         // Второй этап (создание объекта для записи в БД)
 
-
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -36,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         // Choose authentication providers
         Log.d("testLogs", "RegistrationActivity start registration")
         database = Firebase.database.reference          // инициализация базы данных
-
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build())     // список плагинов регистрации
 
@@ -62,20 +55,23 @@ class MainActivity : AppCompatActivity() {
                 val firebaseUser = User(email, uid)            // создаем новый объект user  с параметрами email и uid
                 Log.d("testLogs","RegistrationActivity firebaseUser $firebaseUser")
                 database.child("users").child(uid).setValue(firebaseUser)       // сохраняем пользователя в Firebase Realtime
-                onBackPressed()
+
+
+                val intentToAnotherScreen = Intent(this, BooksActivity::class.java)
+                startActivity(intentToAnotherScreen)
             }
 
             // ...
         } else {                  // обработка ошибки, если результат не OK
             Log.d("testLogs", "RegistrationActivity registration failure")
+            Toast.makeText(this@MainActivity, "Something wrong with registration", Toast.LENGTH_SHORT).show()
+
             // Sign in failed. If response is null the user canceled the
             // sign-in flow using the back button. Otherwise check
             // response.getError().getErrorCode() and handle the error.
             // ...
         }
     }
-
-
 }
 
 
