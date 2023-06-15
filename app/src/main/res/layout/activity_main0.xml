@@ -245,7 +245,7 @@ tools:context=".MainActivity">
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_light"
                     android:text="© Copyright 2023 Bookworm Book Merchandising and Marketing All rights reserved."
-                    android:textColor="@color/darkblue" />
+                    android:textColor="@color/dark_blue" />
 
             </LinearLayout>
 

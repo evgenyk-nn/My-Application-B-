@@ -33,26 +33,30 @@ class BooksActivity : AppCompatActivity() {
             data.add(ItemsViewModel(R.drawable.admin_add_book_icon, "Item " + i))
         }
 
-        // This will pass the ArrayList to our Adapter
-        val adapter = CustomAdapter(data)
-
-        // Setting the Adapter with the recyclerview
-        recyclerview.adapter = adapter
 
 
-        val apiInterface = ApiInterface.create().getMovies()
+
+        val apiInterface = ApiInterface.create().getMovies("48a4ff9fa32412010f41d539955dc00c")
 
         //apiInterface.enqueue( Callback<List<Movie>>())
-        apiInterface.enqueue( object : Callback<TestingDataClass> {
-            override fun onResponse(call: Call<TestingDataClass>?, response: Response<TestingDataClass>?) {
-                    Log.d("testLogs", "OnResponse Success ${response?.body()?.data?.first_name}")
+        apiInterface.enqueue( object : Callback<Movies> {
+            override fun onResponse(call: Call<Movies>?, response: Response<Movies>?) {
+
+                Log.d("testLogs", "OnResponse Success ${response?.body()?.results}")
+                // This will pass the ArrayList to our Adapter
+                val adapter = CustomAdapter(response?.body()?.results)
+
+                // Setting the Adapter with the recyclerview
+                recyclerview.adapter = adapter
+
+
+                // Log.d("testLogs", "OnResponse Success ${call.toString()} ${response?.body()?.results}")
 //                if(response?.body() != null)
 //                    recyclerAdapter.setMovieListItems(response.body()!!)
             }
 
-            override fun onFailure(call: Call<TestingDataClass>?, t: Throwable?) {
-                Log.d("testLogs", "faulure : ${t?.message}")
-
+            override fun onFailure(call: Call<Movies>?, t: Throwable?) {
+                Log.d("testLogs", "onFailure : ${t?.message}")
             }
         })
     }
