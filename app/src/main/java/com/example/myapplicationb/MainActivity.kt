@@ -26,21 +26,23 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val intentToAnotherScreen = Intent(this, BooksActivity::class.java)
+        startActivity(intentToAnotherScreen)
         // Choose authentication providers
         Log.d("testLogs", "RegistrationActivity start registration")
 
 
 
-        database = Firebase.database.reference          // инициализация базы данных
-        val providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build())     // список плагинов регистрации
-
-        // Create and launch sign-in intent
-        val signInIntent = AuthUI.getInstance()
-            .createSignInIntentBuilder()
-            .setAvailableProviders(providers)
-            .build()                                        // создали интента для экрана firebase
-        signInLauncher.launch(signInIntent)                 // запуск экрана firebase auth
+//        database = Firebase.database.reference          // инициализация базы данных
+//        val providers = arrayListOf(
+//            AuthUI.IdpConfig.EmailBuilder().build())     // список плагинов регистрации
+//
+//        // Create and launch sign-in intent
+//        val signInIntent = AuthUI.getInstance()
+//            .createSignInIntentBuilder()
+//            .setAvailableProviders(providers)
+//            .build()                                        // создали интента для экрана firebase
+//        signInLauncher.launch(signInIntent)                 // запуск экрана firebase auth
     }
 
 
