@@ -26,9 +26,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         // Choose authentication providers
         Log.d("testLogs", "RegistrationActivity start registration")
+
+
+
         database = Firebase.database.reference          // инициализация базы данных
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build())     // список плагинов регистрации

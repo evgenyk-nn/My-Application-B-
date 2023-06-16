@@ -5,4 +5,6 @@
     <item name="bookworm_logo" type="id" />
     <item name="login_activity_email_input" type="id" />
     <item name="login_activity_password_input" type="id" />
+    <item name="imageView" type="id" />
+    <item name="imageview" type="id" />
 </resources>
