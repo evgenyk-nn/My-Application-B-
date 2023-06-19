@@ -2,6 +2,7 @@ package com.example.myapplicationb
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,18 +35,15 @@ class BooksActivity : AppCompatActivity() {
             data.add(ItemsViewModel(R.drawable.admin_add_book_icon, "Item " + i))
         }
 
-
-
-
         val apiInterface = ApiInterface.create().getMovies("48a4ff9fa32412010f41d539955dc00c")
 
         //apiInterface.enqueue( Callback<List<Movie>>())
-        apiInterface.enqueue( object : Callback<Movies> {
+        apiInterface.enqueue( object : Callback<Movies>, CustomAdapter.ItemClickListener {
             override fun onResponse(call: Call<Movies>?, response: Response<Movies>?) {
 
                 Log.d("testLogs", "OnResponse Success ${response?.body()?.results}")
                 // This will pass the ArrayList to our Adapter
-                val adapter = CustomAdapter(response?.body()?.results)
+                val adapter = CustomAdapter(response?.body()?.results, this)
 
                 // Setting the Adapter with the recyclerview
                 recyclerview.adapter = adapter
@@ -58,6 +56,11 @@ class BooksActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<Movies>?, t: Throwable?) {
                 Log.d("testLogs", "onFailure : ${t?.message}")
+            }
+
+            override fun onItemClick(position: Int) {
+                Toast.makeText(this@BooksActivity, "click $position", Toast.LENGTH_SHORT).show()
+
             }
         })
     }
