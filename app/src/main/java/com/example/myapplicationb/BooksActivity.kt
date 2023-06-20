@@ -1,5 +1,6 @@
 package com.example.myapplicationb
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -58,8 +59,11 @@ class BooksActivity : AppCompatActivity() {
                 Log.d("testLogs", "onFailure : ${t?.message}")
             }
 
-            override fun onItemClick(position: Int) {
-                Toast.makeText(this@BooksActivity, "click $position", Toast.LENGTH_SHORT).show()
+            override fun onItemClick(id: Int) {
+                // Toast.makeText(this@BooksActivity, "click $position", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@BooksActivity, BooksDetailsActivity::class.java)
+                intent.putExtra("id",id)
+                startActivity(intent)
 
             }
         })
