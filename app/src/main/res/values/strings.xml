@@ -1,7 +1,13 @@
 <resources>
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_application_id" translatable="false">YOUR_APP_ID</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fbYOUR_APP_ID</string>
+
+
     <string name="app_name">BookWorm</string>
     <string name="button_register_title">Register</string>
     <string name="open_drawer" />
-
+    <string name="api_key">48a4ff9fa32412010f41d539955dc00c</string>
+    <string name="name_of_the_movie">name of the movie</string>
 
 </resources>
